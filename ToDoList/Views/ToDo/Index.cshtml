@@ -1,0 +1,32 @@
+﻿@model IEnumerable<ToDoList.Models.TodoList>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<p>
+    <a asp-action="Create">Stwórz nowe zadanie</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Zawartość
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @item.Content
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edytuj</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Usuń</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
